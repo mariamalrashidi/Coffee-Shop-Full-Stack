@@ -8,17 +8,18 @@ AUTH0_DOMAIN = 'dev-1rfw-59v.us.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'https://CoffeShop-drinks/'
 
-## AuthError Exception
 '''
 AuthError Exception
 A standardized way to communicate auth failure modes
 '''
+
+
 class AuthError(Exception):
     def __init__(self, error, status_code):
         self.error = error
         self.status_code = status_code
 
-## Auth Header
+
 def get_token_auth_header():
     auth_header = request.headers.get("Authorization", None)
     if not auth_header:
@@ -51,6 +52,7 @@ def check_permissions(permission, payload):
             'description': 'permission not found'
         }, 403)
     return True
+
 
 def verify_decode_jwt(token):
     # Get public key from Auth0
